@@ -1,0 +1,21 @@
+{% extends 'main2.html' %} {% block content %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Add Roomgroup </h3>
+
+        </div>
+
+        <div class="row ">
+            <div>
+                <form method="POST" action="">
+                    {% csrf_token %} {{form.as_p}}
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

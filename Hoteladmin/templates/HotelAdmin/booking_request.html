@@ -1,0 +1,98 @@
+{% extends 'main-hoteladmin.html' %} {% block content %}
+<a href="{{request.META.HTTP_REFERER}}">Go back home</a>
+
+
+<div class="container-fluid">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h6 class="text-dark mb-0">Booking Requests</h6>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="card shadow col-md-21">
+            <!-- <div class="card-header ">
+                <p class="text-primary m-0 font-weight-bold">Requested Guests</p>
+            </div> -->
+            <div class="card-body">
+
+                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                    <table class="table dataTable my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Room Type </th>
+
+                                <th>Check-in Date</th>
+                                <th>Check-out Date</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Accept/Decline</th>
+                                <th>Paid by</th>
+                                <th>Transaction ID</th>
+                                <th>Paid/NotPaid</th>
+                                <th>Assign Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in bookings %}
+                            <tr>
+                                <td>{{booking.user.username}}</td>
+                                <td>{{booking.room}}</td>
+
+                                <td>{{booking.check_in}}</td>
+                                <td>{{booking.check_out}}</td>
+                                <td>{{booking.quantity}}</td>
+                                <td>
+
+                                    {% widthratio booking.room.price 1 booking.quantity %}
+                                </td>
+
+                                <td>
+                                    {%if booking.booking_status.booking_id == booking.id %}
+                                    <div class="d-flex gap-3 justify-content-around">
+                                        {%if booking.booking_status.accept is True %}<button class="btn btn-primary">Accepted</button> {%else%}
+                                        <button class="btn btn-danger">Declined</button>{%endif%}
+                                    </div>
+                                    {%else%}<a href="{% url 'aceptdecline' booking.id %}">Accept/Decline</a>{%endif%}
+                                </td>
+
+                                <td> {{booking.finishpymnt_booking.paid_by}}</td>
+                                <td> {{booking.finishpymnt_booking.transactionid}}</td>
+
+
+
+                                <td>
+                                    {%if booking.finishpymnt_booking.finishpayment_status.fnishpayment_id == booking.id%}
+                                    <div class="d-flex gap-3 justify-content-around">
+                                        {%if booking.finishpymnt_booking.finishpayment_status.status is True %}<button class="btn btn-primary">Paid</button> {%else%}
+                                        <button class="btn btn-danger">NotPaid</button>{%endif%}
+                                    </div> {%else%}{% if booking.booking_status.accept is True and booking.finishpymnt_booking.booking_id == booking.id%}
+                                    <a href="{% url 'paidunpaid' booking.id %}">Paid/NotPaid</a> {%endif%}{%endif%}
+                                </td>
+
+                                <td>
+                                    {%if booking.finishpymnt_booking.finishpayment_status.status is True %}
+                                    <div class="d-flex gap-3 justify-content-around">
+                                        {%if booking.booking_roomnumber.booking_id != booking.id %}<a href="{% url 'assign-roomnumber' booking.id%}">Assign room </a>{%else%}
+                                        <button class="btn btn-success">Assigned</button> {%endif%}
+
+                                    </div>{%endif%}
+                                </td>
+
+                            </tr>
+                            {%endfor%}
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{%endblock%}

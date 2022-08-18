@@ -1,0 +1,17 @@
+{% extends 'main-hoteladmin.html' %} {% block content %} {%for hoteladmin in hoteladmins %}
+<div>
+    <h2>{{hoteladmin.hotel.name}}</h2>
+
+    <ul class="nav navbar-nav text-light" id="accordionSidebar">
+        <li class="nav-item" role="presentation"><a class="nav-link active" href=""><i
+                    class="fas fa-tachometer-alt"></i><span>Booked</span></a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'manage-room' hoteladmin.hotel.id %}"><i
+                    class="far fa-user-circle"></i><span>Manage Rooms</span></a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'booking-request' hoteladmin.hotel.id %}"><i
+                    class="far fa-user-circle"></i><span>Requests Status</span></a></li>
+
+
+    </ul>
+
+</div>
+{%endfor%} {%endblock%}

@@ -1,0 +1,11 @@
+{% extends 'main-hoteladmin.html' %} {% block content %}
+<a href="{{request.META.HTTP_REFERER}}">Go back home</a> {%if booking.finishpymnt_booking.finishpayment_status.status is True %}
+<form action="" method="POST">
+    {% csrf_token %} Room Number: <input type="text" name="room_number" placeholder="021, 210, ...">
+
+
+    <input type="submit" value="submit">
+
+
+</form>
+{%endif%} {%endblock%}

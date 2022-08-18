@@ -1,0 +1,41 @@
+{% extends 'main-hoteladmin.html' %} {% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="hotel">Hotel:</label><br>
+        <input type="text" id="hotel" name="hotel" value="{{roomgroups.hotel.name}} " readonly>
+    </div>
+    <div>
+        <label for="type">type:</label><br>
+        <input type="text" id="type" name="type" value="{{roomgroups.type}}" required>
+    </div>
+    <div>
+        <label for="facility">facility:</label><br>
+        <input type="text" id="facility" name="facility" value="{{roomgroups.facility}}" required>
+    </div>
+    <div>
+        <label for="number_of_bed">number_of_bed:</label><br>
+        <input type="number" id="number_of_bed" name="number_of_bed" value="{{roomgroups.number_of_bed}}" required>
+    </div>
+    <div>
+        <label for="max_people">max_people:</label><br>
+        <input type="number" id="max_people" name="max_people" value="{{roomgroups.max_people}}" required>
+    </div>
+
+    <div>
+        <label for="price">price:</label><br>
+        <input type="number" id="price" name="price" value="{{roomgroups.price}}" required>
+    </div>
+
+
+    <div>
+        <label for="quantity">quantity:</label><br>
+        <input type="number" id="quantity" name="quantity" value="{{roomgroups.quantity}}" required>
+    </div>
+
+
+    <input type="submit" value="submit">
+
+</form>
+
+{%endblock%}

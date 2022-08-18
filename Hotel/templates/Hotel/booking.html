@@ -1,0 +1,77 @@
+{% extends 'main.html' %} {% block content %}
+<!-- <form action="{% url 'info' roomgroup.hotel.id %}" method="POST">
+    {% csrf_token %}
+    <label for="hotel">Hotel:</label><br>
+    <input type="text" id="hotel" name="hotel" value="{{roomgroup.hotel.name}} " readonly><br>
+    <label for="hotel">Room:</label><br>
+    <input type="text" id="room" name="room" value="{{roomgroup.type}} " readonly><br>
+    <label for="check_in">Check in:</label><br>
+    <input type="date" id="check_in" name="check_in" placeholder="check in date" required><br>
+    <label for="check_out">Check out:</label><br>
+    <input type="date" id="check_out" name="check_out" placeholder="check out date" required><br>
+    <label for="quantity">Quantity:</label><br>
+    <input type="text" id="quantity" name="quantity" placeholder="Quantity" required><br>
+    <input type="submit" value="Book "><br>
+</form>
+<!-- <div>
+    <a href="{% url 'info' roomgroup.hotel.id %}">Infos</a>
+</div> -->
+
+<section></section>
+<div class="register-box">
+    <div class="card card-outline card-primary">
+        <!-- <div class="card-header text-center">
+        <a href="index.html" class="h1">Afroperia</a>
+      </div> -->
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <label for="hotel">Hotel:</label><br>
+                    <input type="text" class="form-control" id="hotel" name="hotel" value="{{roomgroup.hotel.name}} " readonly>
+
+                </div>
+                <div class="input-group mb-3">
+                    <label for="room">Room:</label><br>
+                    <input type="text" class="form-control" id="room" name="room" value="{{roomgroup.type}} " readonly>
+
+                </div>
+                <div class="input-group mb-3">
+                    <label for="check_in">Check in:</label><br>
+                    <input class="form-control" type="date" id="check_in" name="check_in" placeholder="check in date" required>
+
+                </div>
+                <div class="input-group mb-3">
+                    <label for="check_out">Check out:</label><br>
+                    <input class="form-control" type="date" id="check_out" name="check_out" placeholder="check out date" required>
+
+                </div>
+                <div class="input-group mb-3">
+                    <label for="quantity">Quantity:</label><br>
+                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity" required>
+
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-8">
+                    </div>
+
+                    <div class="col-4">
+                        <button type="submit" value="Book" class="btn btn-primary btn-block">Book</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.card -->
+</div>
+
+
+
+{% endblock %}

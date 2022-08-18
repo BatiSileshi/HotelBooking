@@ -1,0 +1,93 @@
+{% extends 'main-hoteladmin.html' %} {% block content %}
+<!-- {{hotel.name}} v {% for roomgroup in roomgroups %}
+<p>{{roomgroup.type}} --- {{roomgroup.id}} --- <a href="{% url 'update-room' roomgroup.id %}">Update</a> --- <a href="{% url 'delete-room' roomgroup.id %}">Delete</a></p>
+
+{% endfor %} {{roomgroups.hotel.id}}
+<a href="{% url 'add-room' hotel.id %}">Add Room</a> -->
+
+
+
+
+
+
+
+<div class="container-fluid">
+    <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h6 class="text-dark mb-0">Room Types in your hotel</h6>
+    </div>
+    <div class="row">
+
+
+        {% for roomgroup in roomgroups %}
+        <div class="col-md-5 col-lg-3 ">
+            <div class="card shadow  ">
+                <div class="card-body">
+                    <div class=" align-items-center ">
+                        <div class="col ">
+                            <div class="room-image">
+                                <img href="/assets/img/" alt="Room photo">
+                            </div>
+                            <div class="text-dark font-weight-bold  mb-0">
+                                <p>{{roomgroup.type}}</p>
+                            </div>
+                            <div>
+                                <p>{{roomgroup.facility}}</p>
+                                <p>{{roomgroup.number_of_bed}}</p>
+                                <p>{{roomgroup.max_people}}</p>
+                                <p>{{roomgroup.price}}</p>
+                                <p>{{roomgroup.quantity}}</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="edit">
+                        <a href="{% url 'update-room' roomgroup.id %}">Update</a>
+                    </div>
+
+                    <div class="edit">
+                        <a href="{% url 'delete-room' roomgroup.id %}">Delete</a>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <div class="col-md-5 col-lg-3 ">
+            <div class="card shadow  ">
+                <div class="card-body">
+                    <div class=" align-items-center ">
+                        <div class="col ">
+
+                            <div class="text-dark font-weight-bold h5 mb-0">
+                                <a class="" href="{% url 'add-room' hotel.id %}">Add Room Type</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+{% endblock %}

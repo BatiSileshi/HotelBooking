@@ -1,0 +1,31 @@
+{% extends 'main.html' %} {% block content %}
+<section>
+
+</section>
+
+
+
+<p> <a href="{% url 'info' booking.room.hotel.id %}">View Hotel Payment Informations and how to pay</a> </p>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <!-- <div class="input-group mb-3">
+        <label for="booking">Booking:</label><br>
+        <input type="text" class="form-control" id="booking" name="booking" value="{{booking.id}}">
+    </div> -->
+
+    <div class="input-group mb-3">
+        <label for="paid_by">Paid by:</label><br>
+        <input type="text" class="form-control" id="paid_by" name="paid_by">
+    </div>
+
+    <div class="input-group mb-3">
+        <label for="transactionid">Transaction Id:</label><br>
+        <input type="text" class="form-control" id="transactionid" name="transactionid">
+    </div>
+
+
+    <input type="submit" value="Submit">
+</form>
+{%endblock%}
