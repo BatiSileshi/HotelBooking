@@ -84,8 +84,7 @@ class PaymentInformations(models.Model):
     updated=models.DateTimeField(auto_now=True)
     created=models.DateTimeField(auto_now_add=True)
     
-    def __str__(self):
-        return self.account_or_shortcode_holder
+    
 
 class RoomGroup(models.Model):
     hotel=models.ForeignKey(Hotel, on_delete=models.CASCADE)
@@ -106,11 +105,13 @@ class RoomGroup(models.Model):
 class Booking(models.Model):
     user=models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     # hotel=models.CharField(max_length=255)
-    hotel=models.ForeignKey(Hotel, on_delete=models.CASCADE)
-    room=models.ForeignKey(RoomGroup, on_delete=models.CASCADE)
-    check_in=models.DateField()
-    check_out=models.DateField()
-    quantity=models.PositiveIntegerField()
+    hotel=models.ForeignKey(Hotel, on_delete=models.CASCADE, null=True)
+  
+    room=models.ForeignKey(RoomGroup, on_delete=models.CASCADE, null=True)
+   
+    check_in=models.DateField(null=True)
+    check_out=models.DateField(null=True)
+    quantity=models.PositiveIntegerField(null=True)
     # status=
     updated=models.DateTimeField(auto_now=True)
     created=models.DateTimeField(auto_now_add=True)
@@ -128,8 +129,9 @@ class BookingRoomNumber(models.Model):
     
 class FinishPayment(models.Model):
     booking=models.OneToOneField(Booking, on_delete=models.CASCADE, primary_key=True, related_name="finishpymnt_booking")
-    paid_by=models.CharField(max_length=255)
-    transactionid=models.CharField(max_length=255)
+    payment_method=models.ForeignKey(PaymentInformations, on_delete=models.CASCADE)
+    paid_by=models.CharField(max_length=255, null=True)
+    transactionid=models.CharField(max_length=255, null=True)
     # screenshot=
     updated=models.DateTimeField(auto_now=True)
     created=models.DateTimeField(auto_now_add=True)

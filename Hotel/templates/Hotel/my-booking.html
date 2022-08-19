@@ -27,6 +27,7 @@
                                 <th>Price</th>
                                 <th>Time Since</th>
                                 <th>Paid by</th>
+                                <th>Paid Through</th>
                                 <th>Booked Room</th>
                                 <th>Status</th>
 
@@ -47,6 +48,7 @@
                                 </td>
                                 <td>{{booking.created|timesince}}</td>
                                 <td> {{booking.finishpymnt_booking.paid_by}}</td>
+                                <td> {{booking.finishpymnt_booking.payment_method.method}}</td>
                                 <td> {{booking.booking_roomnumber.room_number}} </td>
                                 <td>
                                     {% if booking.booking_status.accept is True and booking.id != booking.finishpymnt_booking.booking_id%} <a href="{% url 'finish-pymnt' booking.id %}">Finish Payment</a>

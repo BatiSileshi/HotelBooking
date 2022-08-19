@@ -94,7 +94,7 @@ def registerPage(request):
     context={'page':page, 'form':form}
     return render(request, 'Hotel/login_register.html', context)
 
-
+@login_required(login_url='login')
 def booking(request, pk):
     roomgroup=RoomGroup.objects.get(id=pk)
     user=User.objects.all()
@@ -153,15 +153,18 @@ def getFinishPymnt(request, pk):
     booking=Booking.objects.get(id=pk)
     user=User.objects.all()
     roomgroups=RoomGroup.objects.all()
+    payment_methods=booking.hotel.paymentinformations_set.all()
+   
  
     if request.method == 'POST':
         finishpymnt=FinishPayment.objects.create(
         booking=booking,
+        payment_method_id=request.POST['payment_method'],
         paid_by=request.POST['paid_by'],
         transactionid=request.POST['transactionid'],
         )
         return redirect ('home')
-    context={'booking':booking, 'user':user, 'roomgroups':roomgroups}
+    context={'booking':booking, 'user':user, 'roomgroups':roomgroups, 'payment_methods':payment_methods}
     return render(request, 'Hotel/finish-pymnt.html', context)
 
 def workWithUs(request):

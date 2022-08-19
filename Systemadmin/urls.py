@@ -10,6 +10,7 @@ urlpatterns= [
     path('manage-admin/', views.manageAdmin, name="manage-admin"),
     path('manage-hotel_admin/', views.manageHotelAdmin, name="manage-hotel_admin"),
     path('users/', views.manageUser, name="manage-user"),
+    path('add-hotel-admin/', views.addHotelAdmin, name="add-hotel-admin"),
     
     path('add-hotel/', views.addHotel, name="add-hotel"),
     path('update-hotel/<str:pk>/', views.updateHotel, name="update-hotel"),

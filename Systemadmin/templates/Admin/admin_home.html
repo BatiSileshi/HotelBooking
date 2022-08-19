@@ -86,7 +86,8 @@
                                         <div class="preview-item border-bottom">
                                             <div class="preview-thumbnail">
                                                 <div class="preview-icon bg-primary">
-                                                    <i class="mdi mdi-file-document"><img src="{{hotel.image.url}}"></i>
+                                                    {%if hotel.image %}
+                                                    <i class="mdi mdi-file-document"><img src="{{hotel.image.url}}"></i> {%endif%}
                                                 </div>
                                             </div>
                                             <div class="preview-item-content d-sm-flex flex-grow">

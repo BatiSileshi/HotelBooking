@@ -1,4 +1,4 @@
-{% extends 'main.html'%} {% block content%}
+{% extends 'main.html'%} {% block content%} {% load static%}
 <section></section>
 <div class="row gy-4">
 
@@ -6,7 +6,8 @@
     <div class="col-lg-3 col-md-4">
         <div class="card">
             <div class="card-img">
-                <img src="{{hotel.image.url}}" alt="" class="img-fluid">
+                {%if hotel.image %}
+                <img src="{{hotel.image.url}}" alt="" class="img-fluid"> {%endif%}
             </div>
             <h3>
                 {{hotel.name}}</h3>

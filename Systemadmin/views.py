@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 # from account.models import User
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
-from .forms import HotelForm, CityForm, FacilitiesForm, PaymentInformationsForm, PaymentMethodsForm, RoomGroupForm
+from .forms import HotelAdminForm,  HotelForm, CityForm, FacilitiesForm, PaymentInformationsForm, PaymentMethodsForm, RoomGroupForm
 from Hotel.models import  Hotel, City, Facilities, HotelAdmin, PaymentInformations, PaymentMethods, RoomGroup, WorkWithUs
 from .decorators import allowed_user, admin_only
 # Create your views here.
@@ -102,6 +102,22 @@ def addHotel(request):
         
     context={'form':form}
     return render(request, 'Admin/hotel_form.html', context)
+
+
+#####MANAGE HOTEL ADMIN
+@login_required(login_url='login')
+@allowed_user(allowed_roles=['systemadmin'])
+def addHotelAdmin(request):
+    form=HotelAdminForm()
+    
+    if request.method == 'POST':
+        form =HotelAdminForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-home')
+        
+    context={'form':form}
+    return render(request, 'Admin/hotel-admin_form.html', context)
 
 @login_required(login_url='login')
 @allowed_user(allowed_roles=['systemadmin'])

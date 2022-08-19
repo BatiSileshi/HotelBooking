@@ -15,6 +15,16 @@
         <input type="text" class="form-control" id="booking" name="booking" value="{{booking.id}}">
     </div> -->
 
+
+    <label for="payment_method">Payment Method:</label> <br>
+    <select id="payment_method" name="payment_method">
+    {% for payment_meth in payment_methods %}
+
+    <option name="payment_meth" value="{{payment_meth.id}}">{{payment_meth.method}}</option>
+   
+    {%endfor%}
+  </select>
+
     <div class="input-group mb-3">
         <label for="paid_by">Paid by:</label><br>
         <input type="text" class="form-control" id="paid_by" name="paid_by">
@@ -28,4 +38,5 @@
 
     <input type="submit" value="Submit">
 </form>
+
 {%endblock%}

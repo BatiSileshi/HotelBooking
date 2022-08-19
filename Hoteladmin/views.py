@@ -33,7 +33,8 @@ def home(request, pk):
 
 
 
-
+@login_required(login_url='login')
+@allowed_user(allowed_roles=['hoteladmin'])
 def booked(request, pk):
    hotel=Hotel.objects.get(id=pk)
    bookings=hotel.booking_set.filter().order_by('-created') 

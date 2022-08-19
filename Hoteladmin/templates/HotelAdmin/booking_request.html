@@ -27,6 +27,7 @@
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Accept/Decline</th>
+                                <th>Paid Through</th>
                                 <th>Paid by</th>
                                 <th>Transaction ID</th>
                                 <th>Paid/NotPaid</th>
@@ -55,7 +56,7 @@
                                     </div>
                                     {%else%}<a href="{% url 'aceptdecline' booking.id %}">Accept/Decline</a>{%endif%}
                                 </td>
-
+                                <td> {{booking.finishpymnt_booking.payment_method.method}}</td>
                                 <td> {{booking.finishpymnt_booking.paid_by}}</td>
                                 <td> {{booking.finishpymnt_booking.transactionid}}</td>
 
