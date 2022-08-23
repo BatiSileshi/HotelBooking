@@ -64,7 +64,7 @@ def loginPage(request):
             login(request, user)
             return redirect('admin-home')
         else :
-          messages.error(request, 'Sorry! phone_number or password does not exist.')  
+          messages.error(request, 'Sorry! username or password does not exist.')  
     context={'page':page}
     return render(request, 'Hotel/login_register.html', context)
 
