@@ -5,7 +5,7 @@
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h6 class="text-dark mb-0">My Bookings</h6>
     </div>
-
+    {{model.date_diff }}
 
     <div class="row mt-3">
         <div class="card shadow col-md-21">
@@ -24,12 +24,14 @@
                                 <th>Check-in Date</th>
                                 <th>Check-out Date</th>
                                 <th>Quantity</th>
+
                                 <th>Price</th>
                                 <th>Time Since</th>
                                 <th>Paid by</th>
                                 <th>Paid Through</th>
                                 <th>Booked Room</th>
                                 <th>Status</th>
+                                <th>{{day}}</th>
 
                             </tr>
                         </thead>
@@ -42,9 +44,12 @@
                                 <td>{{booking.check_in}}</td>
                                 <td>{{booking.check_out}}</td>
                                 <td>{{booking.quantity}}</td>
+
+                                <!-- <td>{{ booking.check_out|timeuntil:booking.check_in }}</td> -->
+
                                 <td>
 
-                                    {% widthratio booking.room.price 1 booking.quantity %}
+                                    {% widthratio booking.room.price 1 booking.date_diff%}
                                 </td>
                                 <td>{{booking.created|timesince}}</td>
                                 <td> {{booking.finishpymnt_booking.paid_by}}</td>

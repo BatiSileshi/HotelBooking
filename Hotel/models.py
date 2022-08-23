@@ -112,12 +112,17 @@ class Booking(models.Model):
     check_in=models.DateField(null=True)
     check_out=models.DateField(null=True)
     quantity=models.PositiveIntegerField(null=True)
-    # status=
+    day=models.PositiveIntegerField(null=True)
     updated=models.DateTimeField(auto_now=True)
     created=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return (self.room.type)
+    
+    @property
+    def date_diff(self):
+        
+        return (self.check_out - self.check_in).days * self.quantity
     
 class BookingRoomNumber(models.Model):
      booking=models.OneToOneField(Booking, on_delete=models.CASCADE, primary_key=True, related_name="booking_roomnumber")

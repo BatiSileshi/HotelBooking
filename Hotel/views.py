@@ -15,6 +15,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import BookingRoomNumber,  Hotel, City, PaymentInformations, RoomGroup, Booking, PaymentMethods, FinishPayment
 from .forms import  WorkWithUsForm
 from .decorators import unauthenticated_user, allowed_users, admin_only
+from datetime import date, datetime 
 # Create your views here.
 
 
@@ -101,18 +102,25 @@ def booking(request, pk):
     hotels=Hotel.objects.all()
     
     bookings=roomgroup.booking_set.all()
-    
+  
+
     if request.method=='POST':
+
         book=Booking.objects.create(
         user=request.user,
         hotel=roomgroup.hotel,
         
         room=roomgroup,
-        
+         
         check_in=request.POST['check_in'],
         check_out=request.POST['check_out'],
+        
+
         quantity=request.POST['quantity']
+        
         )
+    
+
         return redirect ('my-booking', pk=request.user.id)
         
     context={'roomgroup':roomgroup, 'hotels':hotels, 'bookings':bookings, 'user':user}
@@ -140,6 +148,8 @@ def myBooking(request, pk):
 
     # roomgroup=bookings.roomgroup_set.all()
     # books=Booking.objects.filter()
+    
+    
     context={'user':user, 'bookings':bookings, 'roomnumber':roomnumber}
     
     if request.user != user:
