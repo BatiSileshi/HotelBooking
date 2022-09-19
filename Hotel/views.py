@@ -126,13 +126,7 @@ def booking(request, pk):
     context={'roomgroup':roomgroup, 'hotels':hotels, 'bookings':bookings, 'user':user}
     return render(request, 'Hotel/booking.html', context)
 
-# def payment(request, pk):
-#      roomgroup=RoomGroup.objects.get(id=pk)
-#      hotels=Hotel.objects.all()
-#      pymntinfos=PaymentInformations.objects.all()
-#      context={'roomgroup':roomgroup, 'hotels':hotels, 'pymntinfos':pymntinfos}
-#      return render(request, 'Hotel/pymnt.html', context)
- 
+
 def pymntInfo(request, pk):
     hotel=Hotel.objects.get(id=pk)
     infos=hotel.paymentinformations_set.all()

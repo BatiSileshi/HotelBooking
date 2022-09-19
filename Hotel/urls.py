@@ -16,7 +16,5 @@ urlpatterns= [
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('register/', views.registerPage, name="register"),
-    
-    # path('booking/<str:pk>', views.booking, name="booking"),
-    # path('add-booking/<str:pk>', views.addBooking, name="add-booking"),
+
 ]
