@@ -43,6 +43,19 @@
 
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <a href="{% url 'hotel' hotel.id %}">
+                <div class="card ">
+                    <div class="card-img">
+                        {%if hotel.image %}
+                        <img src="{{hotel.image.url}}" alt="" class="img-fluid"> {%endif%}
+                    </div>
+                    <h3>{{hotel.name}} </h3>
+                    <p>{{hotel.description}}</p>
+                </div>
+            </a>
+        </div>
+        <!-- End Card Item -->
+        <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="{% url 'hotel' hotel.id %}">
                 <div class="card">
                     <div class="card-img">
                         {%if hotel.image %}
@@ -52,7 +65,7 @@
                     <p>{{hotel.description}}</p>
                 </div>
             </a>
-        </div>
+        </div> -->
 
         {% endfor %}
 

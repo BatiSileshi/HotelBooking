@@ -1,79 +1,82 @@
 {% extends 'hotel/main.html' %} {% block content %} {% load static%}
-<section></section>
-<div class="row gy-4">
+<main id="main">
+    <section>
+        <div class="container">
+            <div class="row gy-4">
 
-
-    <div class="col-lg-3 col-md-4">
-        <div class="card">
-            <div class="card-img">
-                {%if hotel.image %}
-                <img src="{{hotel.image.url}}" alt="" class="img-fluid"> {%endif%}
-            </div>
-            <h3>
-                {{hotel.name}}</h3>
-            <p>{{hotel.description}}</p>
-            <p>Location: {{hotel.Specificlocation_or_subcity}}, {{hotel.city.name}}, {{hotel.city.region}}
-            </p>
-        </div>
-    </div>
-
-    <!-- End Card Item -->
-    <div>
-        <h3>Facilities</h3>{% for facility in facilities %}
-
-        <h4>
-            * {{facility.type}} - {{facility.name}}
-        </h4>
-        <h4>
-
-        </h4>
-        <p>- {{facility.description}}</p>
-        {% endfor %}
-    </div>
-
-</div>
-
-
-
-<hr>
-
-
-<section id="service" class="services pt-0">
-
-
-    <div class="section-header">
-        <span>Hotel Rooms</span>
-        <h2>Hotel Rooms</h2>
-
-    </div>
-
-    <div class="row gy-4">
-
-        {% for roomgroup in roomgroups %}
-
-        <div class="col-lg-3 col-md-4">
-
-            <div class="card">
-                <div class="card-img">
-                    <img src="{{roomgroup.room_photo.url}}" alt="" class="img-fluid">
+                <div class="col-lg-3 col-md-4">
+                    <div class="card">
+                        <div class="card-img">
+                            {%if hotel.image %}
+                            <img src="{{hotel.image.url}}" alt="" class="img-fluid"> {%endif%}
+                        </div>
+                        <h3>
+                            {{hotel.name}}</h3>
+                        <p>{{hotel.description}}</p>
+                        <p>Location: {{hotel.Specificlocation_or_subcity}}, {{hotel.city.name}}, {{hotel.city.region}}
+                        </p>
+                    </div>
                 </div>
-                <h3>
-                    {{roomgroup.type}} Room</h3>
-                {{roomgroup.number_of_bed}} number of bed/s<br> {{roomgroup.price}}ETB/night
-                <br> Facilities: {{roomgroup.facility}}
-                <br> Holds {{roomgroup.max_people}} maximum people<br> There are total of {{roomgroup.quantity}} {{roomgroup.type}} rooms in the hotel</p>
-                <button class="btn-primary "><a href="{% url 'booking' roomgroup.id %}">Book Now</a></button>
+
+                <!-- End Card Item -->
+                <div>
+                    <h3>Facilities</h3>{% for facility in facilities %}
+
+                    <h4>
+                        * {{facility.type}} - {{facility.name}}
+                    </h4>
+                    <h4>
+
+                    </h4>
+                    <p>- {{facility.description}}</p>
+                    {% endfor %}
+                </div>
+
             </div>
 
+
+
+            <hr>
+
+
+            <section id="service" class="services pt-0">
+
+
+                <div class="section-header">
+                    <span>Hotel Rooms</span>
+                    <h2>Hotel Rooms</h2>
+
+                </div>
+
+                <div class="row gy-4">
+
+                    {% for roomgroup in roomgroups %}
+
+                    <div class="col-lg-3 col-md-4">
+
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="{{roomgroup.room_photo.url}}" alt="" class="img-fluid">
+                            </div>
+                            <h3>
+                                {{roomgroup.type}} Room</h3>
+                            {{roomgroup.number_of_bed}} number of bed/s<br> {{roomgroup.price}}ETB/night
+                            <br> Facilities: {{roomgroup.facility}}
+                            <br> Holds {{roomgroup.max_people}} maximum people<br> There are total of {{roomgroup.quantity}} {{roomgroup.type}} rooms in the hotel</p>
+                            <button class="btn-primary "><a href="{% url 'booking' roomgroup.id %}">Book Now</a></button>
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+                    <!-- End Card Item -->
+
+
+                </div>
+            </section>
         </div>
-
-        {% endfor %}
-        <!-- End Card Item -->
-
-
-    </div>
-</section>
-
+    </section>
+</main>
 
 
 {% endblock %}
