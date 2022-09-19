@@ -2,64 +2,29 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="{% url 'home' %}" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
+
             <h1>Afroperia</h1>
         </a>
 
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list">Menu</i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x ">X</i>
 
-        <nav id="navbar" class="navbar">
-            {% if request.user.is_authenticated %}
+        <nav id="navbar " class="navbar ">
 
 
             <ul>
-                <li><a href="{% url 'home' %}" class="active">Home</a></li>
-                <li><a href="{% url 'my-booking' request.user.id %}">My Bookings</a></li>
+                <li><a href="{% url 'home' %} " class="active ">Home</a></li>
+                <li><a href="# ">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'my-booking' request.user.id %} ">My Booking</a></li>
 
-                <li class="dropdown"><a href="#"><span>Top Destinations</span> <i
-                                class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="{% url 'home' %}">Hotels in Hawassa</a></li>
-                        <li><a href="{% url 'home' %}">Hotels in Addis Ababa</a></li>
-                        <li><a href="#">Hotels in Adama</a></li>
-                        <li><a href="#">Hotels in Bahirdar</a></li>
-                        <li><a href="#">Hotels in Harar</a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'home' %}">Contact</a></li>
-                <li><a href="{% url 'work-with-us' %}">Work with us</a></li>
+                <a href="{% url 'logout' %} ">Logout</a> {%else%}
 
+
+                <li><a class="get-a-quote " href="{% url 'login' %} ">Login/Register</a></li>{%endif%}
             </ul>
-            <ul>
 
-                <li><span>Hello {{request.user}}</span><a class="get-a-quote" href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-            </ul>
-            <ul>
-                <li><a href="{% url 'home' %}" class="active">Home</a></li>
-                <li><a href="{% url 'my-booking' request.user.id %}">My Bookings</a></li>
-
-                <li class="dropdown"><a href="#"><span>Top Destinations</span> <i
-                                class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="{% url 'home' %}">Hotels in Hawassa</a></li>
-                        <li><a href="{% url 'home' %}">Hotels in Addis Ababa</a></li>
-                        <li><a href="#">Hotels in Adama</a></li>
-                        <li><a href="#">Hotels in Bahirdar</a></li>
-                        <li><a href="#">Hotels in Harar</a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'home' %}">Contact</a></li>
-                <li><a href="{% url 'work-with-us' %}">Work with us</a></li>
-
-            </ul>
-            <li><a class="get-a-quote" href="{% url 'login' %}">Login/Register</a></li>
-            {% endif %}
         </nav>
-
-
 
     </div>
 </header>
